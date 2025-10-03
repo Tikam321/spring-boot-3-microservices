@@ -1,0 +1,2 @@
+CREATE DATABASE IF NOT EXISTS inventory_service;
+CREATE DATABASE IF NOT EXIST order_service;

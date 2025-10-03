@@ -1,0 +1,12 @@
+db.product.deleteMany({})
+db.product.find().pretty()
+db.products.find().pretty()
+show collections
+show dbs
+exit
+mongesh mongodb://root:password@localhost:27017/product-service?authSource=admin
+mongosh "mongodb://<username>:<password>@localhost:27017/product-service"
+mongosh mongodb://root:localhost@localhost:27017/product-service
+mongosh "mongodb://root:localhost@localhost:27017/product-service"
+mongosh "mongodb://root:localhost@localhost:27017/product-servic
+show dbs

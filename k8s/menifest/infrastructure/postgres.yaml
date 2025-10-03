@@ -1,0 +1,116 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: postgres
+  name: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - image: postgres:16
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+          name: postgres
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  key: postgres_db
+                  name: inventory-postgres-secret
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  key: postgres_user
+                  name: inventory-postgres-secret
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: postgres_password
+                  name: inventory-postgres-secret
+          volumeMounts:
+              - mountPath: /var/lib/postgresql/data
+                name: inventory-postgres-data
+              - mountPath: /docker-entrypoint-initdb.d
+                name: inventory-postgres-config
+      volumes:
+        - name: inventory-postgres-data
+          persistentVolumeClaim:
+            claimName: inventory-postgres-pvc
+        - name: inventory-postgres-config
+          configMap:
+            name: inventory-postgres-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: postgres
+  name: postgres
+spec:
+  ports:
+    - port: 5432
+      protocol: TCP
+      targetPort: 5432
+  selector:
+    app: postgres
+
+---
+apiVersion: v1
+data:
+  postgres_db: aW52ZW50b3J5X3NlcnZpY2U=
+  postgres_user: cG9zdGdyZXM=
+  postgres_password: cG9zdGdyZXM=
+kind: Secret
+metadata:
+  name: inventory-postgres-secret
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: inventory-postgres-pv
+spec:
+  storageClassName: "standard"
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /data/postgresql
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: inventory-postgres-pvc
+spec:
+  storageClassName: "standard"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: inventory-postgres-config
+data:
+  initdb.sql: |
+    CREATE DATABASE inventory_service;
+    CREATE DATABASE order_service;
+
