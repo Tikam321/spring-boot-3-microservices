@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "t_inventory")
+
 public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +16,9 @@ public class Inventory {
     public Inventory(String skuCode, Integer quantity) {
         this.skuCode = skuCode;
         this.quantity = quantity;
+    }
+
+    public Inventory() {
     }
 
     public Long getID() {

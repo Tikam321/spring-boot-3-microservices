@@ -13,3 +13,8 @@ services:
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
       - ./docker/postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
+  redis:
+    image: redis:8.2.2
+    container_name: redisson
+    ports:
+      - "6379:6379"

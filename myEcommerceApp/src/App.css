@@ -1,0 +1,14 @@
+.grid {
+    display: flex;
+    margin: 30px;
+}
+
+.product-card {
+  border: 1px solid rgb(204, 204, 204);
+    border-radius: 8px;
+    padding: 16px;
+    width: 200px;
+    background-color: rgb(255, 235, 59);
+    color: black;
+    margin: 15px;
+}

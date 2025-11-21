@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
 import { useNavigate } from "react-router-dom";
+import keycloak from "../keycloak";
 
 interface ProductForm {
   name: string;
@@ -19,10 +20,12 @@ const CreateProduct: React.FC = () => {
   });
 
   const createProduct = async () => {
+      const token = keycloak.token;
     const response = await fetch("http://localhost:9000/api/product", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+         "Authorization": `Bearer ${token}` // attach access token
       },
       body: JSON.stringify(form), // ✅ request body
     });

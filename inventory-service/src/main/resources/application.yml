@@ -11,6 +11,10 @@ spring:
     hibernate:
       ddl-auto: "none"
 
+  redis:
+    host: localhost
+    port: 6379
+
 server:
   port: 8082
 

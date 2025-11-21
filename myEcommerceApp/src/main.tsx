@@ -27,9 +27,9 @@ const Root = () => {
       });
   }, []);
 
-  if (!isAuthenticated) {
-    return <div>Loading authentication...</div>;
-  }
+//   if (!isAuthenticated) {
+//     return <div>Loading authentication...</div>;
+//   }
 
   return <App />;
 };

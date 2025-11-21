@@ -30,9 +30,22 @@ public class OrderService {
         // 2. wiremock (to mock the api)(external api communication)
         boolean inStock = inventoryClient.isInStock(orderRequest.getSkuCode(), orderRequest.getQuantity());
         if (inStock) {
+
+            System.out.println("inside the  in stock condition");
             Order order = new Order(orderRequest.getOrderName(),orderRequest.getSkuCode(),
                     orderRequest.getPrice(),orderRequest.getQuantity());
+
+            // reduce the count in the skuCode product in inventory
+            try {
+                boolean orderPlaced = inventoryClient.placeOrder(orderRequest.getSkuCode());
+                System.out.println("the order places status is " + orderPlaced);
+                log.info("the order places api is called in rest client inventory microservices");
+            } catch (Exception e) {
+                System.out.println("there is some error is coming inventory operations " + e.getMessage());
+            }
+
             Order savedOrder = orderRepository.save(order);
+            System.out.println("order is saved");
             // send the messages to kafka
             //email and orderId
             OrderPlacedEvent orderPlacedEvent = new OrderPlacedEvent();

@@ -67,6 +67,8 @@ const Navbar: React.FC = () => {
         {/* </Link> */}
          <button onClick={() => navigate("/list")}>list</button>
         <button onClick={() => navigate("/create")}>create order</button>
+         <button onClick={() => navigate("/addInventory")}> add Inventory </button>
+
       </div>
 
       {/* Right side: Auth button */}

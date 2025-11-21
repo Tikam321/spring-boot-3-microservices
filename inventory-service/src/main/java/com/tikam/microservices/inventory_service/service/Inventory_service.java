@@ -7,4 +7,5 @@ import org.springframework.stereotype.Service;
 public interface Inventory_service {
     Inventory createInventory(InventoryRecord inventoryRecord);
     boolean isInStock(String skuCode, Integer quantity);
+    boolean placeOrder(String skuCode);
 }

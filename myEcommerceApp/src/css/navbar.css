@@ -1,11 +1,9 @@
 .navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  width: 97%;
-  background-color: #222;
+  background-color: black;
   color: white;
-  padding: 12px 20px;
+  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,14 +42,19 @@
   color: white;
   font-weight: bold;
 }
-
+/* 
 .auth-btn:hover {
   background-color: #e68900;
-}
+} */
 .auth-button {
   border: "none";
   padding: "8px 16px";
   borderRadius: "5px";
   color: "white";
   cursor: "pointer";
+}
+
+button {
+  background-color: #ff9800;
+  border-radius: 5px;
 }

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../App.css";
 import { useNavigate } from "react-router-dom";
 import keycloak from "../keycloak";
-
-
+import { toast } from "react-toastify";
 
 interface ProductForm {
   name: string;
@@ -87,10 +86,12 @@ useEffect(() => {
 
   const fetchProducts = async (): Promise<ProductForm[]> => {
   try {
+      const token = keycloak.token;
     const response = await fetch("http://localhost:9000/api/product", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}` // attach access token
       },
     });
 
@@ -118,26 +119,32 @@ setProduct(prevProducts =>
 
   const createOrder = async (order: ProductForm) => {
     try {
+        const token = keycloak.token;
     const response = await fetch("http://localhost:9000/api/order", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
       },
       body: JSON.stringify({orderName: order.name, price: order.price, quantity: order.quantity, skuCode: order.skuCode, email: userInfo?.email})
     });
+
     if (response.ok) {
       console.log("Order created successfully");
+       toast.success("Order Created Successfully!"); // ✅ show success toast
       navigate("/");
-    }
+    } else {
+                toast.error("Order failed"); // ✅ show success toast
+
+        }
   } catch (error) {
+      console.log("order api error is coming")
   }
 };
 
   function orderItemHandler(skuCode: string): void {
    const item = product.find(p => p.skuCode === skuCode);
    if (item && item.quantity > 0) {
-
-
   }
 }
 

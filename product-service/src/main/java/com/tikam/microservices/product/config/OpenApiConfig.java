@@ -14,7 +14,7 @@ public class OpenApiConfig {
     public OpenAPI productServiceApi() {
         return new OpenAPI()
                 .info(new Info().title("Product Service API")
-                        .description("this is the REST API for prodduct service")
+                        .description("this is the REST API for prodduct service123")
                         .license(new License().name("Apache 22.0")))
                 .externalDocs(new ExternalDocumentation().description("You can refer to the product service")
                         .url("https://product-service/docs"));

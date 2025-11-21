@@ -13,8 +13,9 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**") // allow for your product API
-                        .allowedOrigins("*")   // allow all origins (use specific domains in prod)
+                registry.
+                         addMapping("/**") // allow for your product API
+                        .allowedOrigins("*")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*");
             }
