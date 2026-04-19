@@ -29,8 +29,8 @@ public class InventoryController {
         return ResponseEntity.status(HttpStatus.CREATED).body(inventory_service.createInventory(inventoryRecord));
     }
 
-    @GetMapping("/placeOrder/{skuCode}")
-    public ResponseEntity<Boolean> orderItemFromInventory(@PathVariable @NotEmpty String skuCode) {
-        return ResponseEntity.status(HttpStatus.OK).body(inventory_service.placeOrder(skuCode));
-    }
+//    @GetMapping("/placeOrder/{skuCode}")
+//    public ResponseEntity<Boolean> orderItemFromInventory(@PathVariable @NotEmpty String skuCode) {
+//        return ResponseEntity.status(HttpStatus.OK).body(inventory_service.placeOrder(skuCode));
+//    }
 }

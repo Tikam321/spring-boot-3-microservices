@@ -1,10 +1,9 @@
 {
   "type": "record",
-  "name": "OrderPlacedEvent",
+  "name": "OrderConfirmedEvent",
   "namespace": "com.tikam.microservices.order_service.event",
   "fields": [
     { "name": "orderNumber", "type": "string" },
-    { "name": "skuCode", "type": "string" },
     { "name": "email", "type": "string" },
     { "name": "firstName", "type": "string" },
     { "name": "lastName", "type": "string" }

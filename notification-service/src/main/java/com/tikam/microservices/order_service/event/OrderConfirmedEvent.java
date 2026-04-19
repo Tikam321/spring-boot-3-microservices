@@ -12,26 +12,26 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
-public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -1460135799717657024L;
+public class OrderConfirmedEvent extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = -1460135799717657025L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"OrderPlacedEvent\",\"namespace\":\"com.tikam.microservices.order_service.event\",\"fields\":[{\"name\":\"orderNumber\",\"type\":\"string\"},{\"name\":\"skuCode\",\"type\":\"string\"},{\"name\":\"email\",\"type\":\"string\"},{\"name\":\"firstName\",\"type\":\"string\"},{\"name\":\"lastName\",\"type\":\"string\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"OrderConfirmedEvent\",\"namespace\":\"com.tikam.microservices.order_service.event\",\"fields\":[{\"name\":\"orderNumber\",\"type\":\"string\"},{\"name\":\"email\",\"type\":\"string\"},{\"name\":\"firstName\",\"type\":\"string\"},{\"name\":\"lastName\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<OrderPlacedEvent> ENCODER =
+  private static final BinaryMessageEncoder<OrderConfirmedEvent> ENCODER =
       new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<OrderPlacedEvent> DECODER =
+  private static final BinaryMessageDecoder<OrderConfirmedEvent> DECODER =
       new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
    * @return the message encoder used by this class
    */
-  public static BinaryMessageEncoder<OrderPlacedEvent> getEncoder() {
+  public static BinaryMessageEncoder<OrderConfirmedEvent> getEncoder() {
     return ENCODER;
   }
 
@@ -39,7 +39,7 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
    * Return the BinaryMessageDecoder instance used by this class.
    * @return the message decoder used by this class
    */
-  public static BinaryMessageDecoder<OrderPlacedEvent> getDecoder() {
+  public static BinaryMessageDecoder<OrderConfirmedEvent> getDecoder() {
     return DECODER;
   }
 
@@ -48,12 +48,12 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
-  public static BinaryMessageDecoder<OrderPlacedEvent> createDecoder(SchemaStore resolver) {
+  public static BinaryMessageDecoder<OrderConfirmedEvent> createDecoder(SchemaStore resolver) {
     return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
-   * Serializes this OrderPlacedEvent to a ByteBuffer.
+   * Serializes this OrderConfirmedEvent to a ByteBuffer.
    * @return a buffer holding the serialized data for this instance
    * @throws java.io.IOException if this instance could not be serialized
    */
@@ -62,18 +62,17 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
   }
 
   /**
-   * Deserializes a OrderPlacedEvent from a ByteBuffer.
+   * Deserializes a OrderConfirmedEvent from a ByteBuffer.
    * @param b a byte buffer holding serialized data for an instance of this class
-   * @return a OrderPlacedEvent instance decoded from the given buffer
+   * @return a OrderConfirmedEvent instance decoded from the given buffer
    * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
    */
-  public static OrderPlacedEvent fromByteBuffer(
+  public static OrderConfirmedEvent fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
 
   private java.lang.CharSequence orderNumber;
-  private java.lang.CharSequence skuCode;
   private java.lang.CharSequence email;
   private java.lang.CharSequence firstName;
   private java.lang.CharSequence lastName;
@@ -83,19 +82,17 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public OrderPlacedEvent() {}
+  public OrderConfirmedEvent() {}
 
   /**
    * All-args constructor.
    * @param orderNumber The new value for orderNumber
-   * @param skuCode The new value for skuCode
    * @param email The new value for email
    * @param firstName The new value for firstName
    * @param lastName The new value for lastName
    */
-  public OrderPlacedEvent(java.lang.CharSequence orderNumber, java.lang.CharSequence skuCode, java.lang.CharSequence email, java.lang.CharSequence firstName, java.lang.CharSequence lastName) {
+  public OrderConfirmedEvent(java.lang.CharSequence orderNumber, java.lang.CharSequence email, java.lang.CharSequence firstName, java.lang.CharSequence lastName) {
     this.orderNumber = orderNumber;
-    this.skuCode = skuCode;
     this.email = email;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -112,10 +109,9 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return orderNumber;
-    case 1: return skuCode;
-    case 2: return email;
-    case 3: return firstName;
-    case 4: return lastName;
+    case 1: return email;
+    case 2: return firstName;
+    case 3: return lastName;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -126,10 +122,9 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: orderNumber = (java.lang.CharSequence)value$; break;
-    case 1: skuCode = (java.lang.CharSequence)value$; break;
-    case 2: email = (java.lang.CharSequence)value$; break;
-    case 3: firstName = (java.lang.CharSequence)value$; break;
-    case 4: lastName = (java.lang.CharSequence)value$; break;
+    case 1: email = (java.lang.CharSequence)value$; break;
+    case 2: firstName = (java.lang.CharSequence)value$; break;
+    case 3: lastName = (java.lang.CharSequence)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -149,23 +144,6 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
    */
   public void setOrderNumber(java.lang.CharSequence value) {
     this.orderNumber = value;
-  }
-
-  /**
-   * Gets the value of the 'skuCode' field.
-   * @return The value of the 'skuCode' field.
-   */
-  public java.lang.CharSequence getSkuCode() {
-    return skuCode;
-  }
-
-
-  /**
-   * Sets the value of the 'skuCode' field.
-   * @param value the value to set.
-   */
-  public void setSkuCode(java.lang.CharSequence value) {
-    this.skuCode = value;
   }
 
   /**
@@ -220,48 +198,47 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
   }
 
   /**
-   * Creates a new OrderPlacedEvent RecordBuilder.
-   * @return A new OrderPlacedEvent RecordBuilder
+   * Creates a new OrderConfirmedEvent RecordBuilder.
+   * @return A new OrderConfirmedEvent RecordBuilder
    */
-  public static com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder newBuilder() {
-    return new com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder();
+  public static com.tikam.microservices.order_service.event.OrderConfirmedEvent.Builder newBuilder() {
+    return new com.tikam.microservices.order_service.event.OrderConfirmedEvent.Builder();
   }
 
   /**
-   * Creates a new OrderPlacedEvent RecordBuilder by copying an existing Builder.
+   * Creates a new OrderConfirmedEvent RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new OrderPlacedEvent RecordBuilder
+   * @return A new OrderConfirmedEvent RecordBuilder
    */
-  public static com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder newBuilder(com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder other) {
+  public static com.tikam.microservices.order_service.event.OrderConfirmedEvent.Builder newBuilder(com.tikam.microservices.order_service.event.OrderConfirmedEvent.Builder other) {
     if (other == null) {
-      return new com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder();
+      return new com.tikam.microservices.order_service.event.OrderConfirmedEvent.Builder();
     } else {
-      return new com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder(other);
+      return new com.tikam.microservices.order_service.event.OrderConfirmedEvent.Builder(other);
     }
   }
 
   /**
-   * Creates a new OrderPlacedEvent RecordBuilder by copying an existing OrderPlacedEvent instance.
+   * Creates a new OrderConfirmedEvent RecordBuilder by copying an existing OrderConfirmedEvent instance.
    * @param other The existing instance to copy.
-   * @return A new OrderPlacedEvent RecordBuilder
+   * @return A new OrderConfirmedEvent RecordBuilder
    */
-  public static com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder newBuilder(com.tikam.microservices.order_service.event.OrderPlacedEvent other) {
+  public static com.tikam.microservices.order_service.event.OrderConfirmedEvent.Builder newBuilder(com.tikam.microservices.order_service.event.OrderConfirmedEvent other) {
     if (other == null) {
-      return new com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder();
+      return new com.tikam.microservices.order_service.event.OrderConfirmedEvent.Builder();
     } else {
-      return new com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder(other);
+      return new com.tikam.microservices.order_service.event.OrderConfirmedEvent.Builder(other);
     }
   }
 
   /**
-   * RecordBuilder for OrderPlacedEvent instances.
+   * RecordBuilder for OrderConfirmedEvent instances.
    */
   @org.apache.avro.specific.AvroGenerated
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<OrderPlacedEvent>
-    implements org.apache.avro.data.RecordBuilder<OrderPlacedEvent> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<OrderConfirmedEvent>
+    implements org.apache.avro.data.RecordBuilder<OrderConfirmedEvent> {
 
     private java.lang.CharSequence orderNumber;
-    private java.lang.CharSequence skuCode;
     private java.lang.CharSequence email;
     private java.lang.CharSequence firstName;
     private java.lang.CharSequence lastName;
@@ -275,55 +252,47 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder other) {
+    private Builder(com.tikam.microservices.order_service.event.OrderConfirmedEvent.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.orderNumber)) {
         this.orderNumber = data().deepCopy(fields()[0].schema(), other.orderNumber);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
-      if (isValidValue(fields()[1], other.skuCode)) {
-        this.skuCode = data().deepCopy(fields()[1].schema(), other.skuCode);
+      if (isValidValue(fields()[1], other.email)) {
+        this.email = data().deepCopy(fields()[1].schema(), other.email);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
-      if (isValidValue(fields()[2], other.email)) {
-        this.email = data().deepCopy(fields()[2].schema(), other.email);
+      if (isValidValue(fields()[2], other.firstName)) {
+        this.firstName = data().deepCopy(fields()[2].schema(), other.firstName);
         fieldSetFlags()[2] = other.fieldSetFlags()[2];
       }
-      if (isValidValue(fields()[3], other.firstName)) {
-        this.firstName = data().deepCopy(fields()[3].schema(), other.firstName);
+      if (isValidValue(fields()[3], other.lastName)) {
+        this.lastName = data().deepCopy(fields()[3].schema(), other.lastName);
         fieldSetFlags()[3] = other.fieldSetFlags()[3];
-      }
-      if (isValidValue(fields()[4], other.lastName)) {
-        this.lastName = data().deepCopy(fields()[4].schema(), other.lastName);
-        fieldSetFlags()[4] = other.fieldSetFlags()[4];
       }
     }
 
     /**
-     * Creates a Builder by copying an existing OrderPlacedEvent instance
+     * Creates a Builder by copying an existing OrderConfirmedEvent instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.tikam.microservices.order_service.event.OrderPlacedEvent other) {
+    private Builder(com.tikam.microservices.order_service.event.OrderConfirmedEvent other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.orderNumber)) {
         this.orderNumber = data().deepCopy(fields()[0].schema(), other.orderNumber);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.skuCode)) {
-        this.skuCode = data().deepCopy(fields()[1].schema(), other.skuCode);
+      if (isValidValue(fields()[1], other.email)) {
+        this.email = data().deepCopy(fields()[1].schema(), other.email);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.email)) {
-        this.email = data().deepCopy(fields()[2].schema(), other.email);
+      if (isValidValue(fields()[2], other.firstName)) {
+        this.firstName = data().deepCopy(fields()[2].schema(), other.firstName);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.firstName)) {
-        this.firstName = data().deepCopy(fields()[3].schema(), other.firstName);
+      if (isValidValue(fields()[3], other.lastName)) {
+        this.lastName = data().deepCopy(fields()[3].schema(), other.lastName);
         fieldSetFlags()[3] = true;
-      }
-      if (isValidValue(fields()[4], other.lastName)) {
-        this.lastName = data().deepCopy(fields()[4].schema(), other.lastName);
-        fieldSetFlags()[4] = true;
       }
     }
 
@@ -341,7 +310,7 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
       * @param value The value of 'orderNumber'.
       * @return This builder.
       */
-    public com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder setOrderNumber(java.lang.CharSequence value) {
+    public com.tikam.microservices.order_service.event.OrderConfirmedEvent.Builder setOrderNumber(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.orderNumber = value;
       fieldSetFlags()[0] = true;
@@ -361,49 +330,9 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
       * Clears the value of the 'orderNumber' field.
       * @return This builder.
       */
-    public com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder clearOrderNumber() {
+    public com.tikam.microservices.order_service.event.OrderConfirmedEvent.Builder clearOrderNumber() {
       orderNumber = null;
       fieldSetFlags()[0] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'skuCode' field.
-      * @return The value.
-      */
-    public java.lang.CharSequence getSkuCode() {
-      return skuCode;
-    }
-
-
-    /**
-      * Sets the value of the 'skuCode' field.
-      * @param value The value of 'skuCode'.
-      * @return This builder.
-      */
-    public com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder setSkuCode(java.lang.CharSequence value) {
-      validate(fields()[1], value);
-      this.skuCode = value;
-      fieldSetFlags()[1] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'skuCode' field has been set.
-      * @return True if the 'skuCode' field has been set, false otherwise.
-      */
-    public boolean hasSkuCode() {
-      return fieldSetFlags()[1];
-    }
-
-
-    /**
-      * Clears the value of the 'skuCode' field.
-      * @return This builder.
-      */
-    public com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder clearSkuCode() {
-      skuCode = null;
-      fieldSetFlags()[1] = false;
       return this;
     }
 
@@ -421,10 +350,10 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
       * @param value The value of 'email'.
       * @return This builder.
       */
-    public com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder setEmail(java.lang.CharSequence value) {
-      validate(fields()[2], value);
+    public com.tikam.microservices.order_service.event.OrderConfirmedEvent.Builder setEmail(java.lang.CharSequence value) {
+      validate(fields()[1], value);
       this.email = value;
-      fieldSetFlags()[2] = true;
+      fieldSetFlags()[1] = true;
       return this;
     }
 
@@ -433,7 +362,7 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
       * @return True if the 'email' field has been set, false otherwise.
       */
     public boolean hasEmail() {
-      return fieldSetFlags()[2];
+      return fieldSetFlags()[1];
     }
 
 
@@ -441,9 +370,9 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
       * Clears the value of the 'email' field.
       * @return This builder.
       */
-    public com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder clearEmail() {
+    public com.tikam.microservices.order_service.event.OrderConfirmedEvent.Builder clearEmail() {
       email = null;
-      fieldSetFlags()[2] = false;
+      fieldSetFlags()[1] = false;
       return this;
     }
 
@@ -461,10 +390,10 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
       * @param value The value of 'firstName'.
       * @return This builder.
       */
-    public com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder setFirstName(java.lang.CharSequence value) {
-      validate(fields()[3], value);
+    public com.tikam.microservices.order_service.event.OrderConfirmedEvent.Builder setFirstName(java.lang.CharSequence value) {
+      validate(fields()[2], value);
       this.firstName = value;
-      fieldSetFlags()[3] = true;
+      fieldSetFlags()[2] = true;
       return this;
     }
 
@@ -473,7 +402,7 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
       * @return True if the 'firstName' field has been set, false otherwise.
       */
     public boolean hasFirstName() {
-      return fieldSetFlags()[3];
+      return fieldSetFlags()[2];
     }
 
 
@@ -481,9 +410,9 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
       * Clears the value of the 'firstName' field.
       * @return This builder.
       */
-    public com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder clearFirstName() {
+    public com.tikam.microservices.order_service.event.OrderConfirmedEvent.Builder clearFirstName() {
       firstName = null;
-      fieldSetFlags()[3] = false;
+      fieldSetFlags()[2] = false;
       return this;
     }
 
@@ -501,10 +430,10 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
       * @param value The value of 'lastName'.
       * @return This builder.
       */
-    public com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder setLastName(java.lang.CharSequence value) {
-      validate(fields()[4], value);
+    public com.tikam.microservices.order_service.event.OrderConfirmedEvent.Builder setLastName(java.lang.CharSequence value) {
+      validate(fields()[3], value);
       this.lastName = value;
-      fieldSetFlags()[4] = true;
+      fieldSetFlags()[3] = true;
       return this;
     }
 
@@ -513,7 +442,7 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
       * @return True if the 'lastName' field has been set, false otherwise.
       */
     public boolean hasLastName() {
-      return fieldSetFlags()[4];
+      return fieldSetFlags()[3];
     }
 
 
@@ -521,22 +450,21 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
       * Clears the value of the 'lastName' field.
       * @return This builder.
       */
-    public com.tikam.microservices.order_service.event.OrderPlacedEvent.Builder clearLastName() {
+    public com.tikam.microservices.order_service.event.OrderConfirmedEvent.Builder clearLastName() {
       lastName = null;
-      fieldSetFlags()[4] = false;
+      fieldSetFlags()[3] = false;
       return this;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public OrderPlacedEvent build() {
+    public OrderConfirmedEvent build() {
       try {
-        OrderPlacedEvent record = new OrderPlacedEvent();
+        OrderConfirmedEvent record = new OrderConfirmedEvent();
         record.orderNumber = fieldSetFlags()[0] ? this.orderNumber : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.skuCode = fieldSetFlags()[1] ? this.skuCode : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.email = fieldSetFlags()[2] ? this.email : (java.lang.CharSequence) defaultValue(fields()[2]);
-        record.firstName = fieldSetFlags()[3] ? this.firstName : (java.lang.CharSequence) defaultValue(fields()[3]);
-        record.lastName = fieldSetFlags()[4] ? this.lastName : (java.lang.CharSequence) defaultValue(fields()[4]);
+        record.email = fieldSetFlags()[1] ? this.email : (java.lang.CharSequence) defaultValue(fields()[1]);
+        record.firstName = fieldSetFlags()[2] ? this.firstName : (java.lang.CharSequence) defaultValue(fields()[2]);
+        record.lastName = fieldSetFlags()[3] ? this.lastName : (java.lang.CharSequence) defaultValue(fields()[3]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -547,8 +475,8 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<OrderPlacedEvent>
-    WRITER$ = (org.apache.avro.io.DatumWriter<OrderPlacedEvent>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<OrderConfirmedEvent>
+    WRITER$ = (org.apache.avro.io.DatumWriter<OrderConfirmedEvent>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -556,8 +484,8 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<OrderPlacedEvent>
-    READER$ = (org.apache.avro.io.DatumReader<OrderPlacedEvent>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<OrderConfirmedEvent>
+    READER$ = (org.apache.avro.io.DatumReader<OrderConfirmedEvent>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {
@@ -570,8 +498,6 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
     throws java.io.IOException
   {
     out.writeString(this.orderNumber);
-
-    out.writeString(this.skuCode);
 
     out.writeString(this.email);
 
@@ -588,8 +514,6 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
     if (fieldOrder == null) {
       this.orderNumber = in.readString(this.orderNumber instanceof Utf8 ? (Utf8)this.orderNumber : null);
 
-      this.skuCode = in.readString(this.skuCode instanceof Utf8 ? (Utf8)this.skuCode : null);
-
       this.email = in.readString(this.email instanceof Utf8 ? (Utf8)this.email : null);
 
       this.firstName = in.readString(this.firstName instanceof Utf8 ? (Utf8)this.firstName : null);
@@ -597,25 +521,21 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
       this.lastName = in.readString(this.lastName instanceof Utf8 ? (Utf8)this.lastName : null);
 
     } else {
-      for (int i = 0; i < 5; i++) {
+      for (int i = 0; i < 4; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
           this.orderNumber = in.readString(this.orderNumber instanceof Utf8 ? (Utf8)this.orderNumber : null);
           break;
 
         case 1:
-          this.skuCode = in.readString(this.skuCode instanceof Utf8 ? (Utf8)this.skuCode : null);
-          break;
-
-        case 2:
           this.email = in.readString(this.email instanceof Utf8 ? (Utf8)this.email : null);
           break;
 
-        case 3:
+        case 2:
           this.firstName = in.readString(this.firstName instanceof Utf8 ? (Utf8)this.firstName : null);
           break;
 
-        case 4:
+        case 3:
           this.lastName = in.readString(this.lastName instanceof Utf8 ? (Utf8)this.lastName : null);
           break;
 

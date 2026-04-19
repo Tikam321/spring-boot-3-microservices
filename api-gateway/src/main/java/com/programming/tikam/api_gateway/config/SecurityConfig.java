@@ -16,11 +16,11 @@ public class SecurityConfig {
        return httpSecurity.cors(Customizer.withDefaults()) // enable CORS
                 .csrf(csrf -> csrf.disable()).   // disable CSRF for APIs
                authorizeHttpRequests(authorize -> authorize
-                       .requestMatchers(freeResourceUrls)
+                       .requestMatchers("/*")
                        .permitAll()
-                       .anyRequest()
-                .authenticated())
-                .oauth2ResourceServer(oath2 ->oath2.jwt(Customizer.withDefaults()))
-                .build();
+                       .anyRequest()).build();
+//                .authenticated())
+//                .oauth2ResourceServer(oath2 ->oath2.jwt(Customizer.withDefaults()))
+//                .build();
     }
 }

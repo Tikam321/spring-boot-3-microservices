@@ -1,6 +1,6 @@
 package com.tikam.microservices.notification_service;
 
-import com.tikam.microservices.order_service.event.OrderPlacedEvent;
+import com.tikam.microservices.order_service.event.OrderConfirmedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -19,29 +19,29 @@ public class NotificationService {
         this.javaMailSender = javaMailSender;
     }
 
-    @KafkaListener(topics = "order-placed")
-    public void listen(OrderPlacedEvent orderPlaced) {
-        log.info("Got message from OrderPlacedEvent-service topic {}", orderPlaced);
+    @KafkaListener(topics = "order-confirmed")
+    public void listen(OrderConfirmedEvent orderConfirmedEvent) {
+        log.info("Got message from order-confirmed topic {}", orderConfirmedEvent);
         MimeMessagePreparator messagePreparator = mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
             messageHelper.setFrom("springshop@email.com");
-            messageHelper.setTo(orderPlaced.getEmail().toString());
-            messageHelper.setSubject(String.format("Your OrderPlacedEvent with OrderNumber %s is placed successfully", orderPlaced.getOrderNumber()));
+            messageHelper.setTo(orderConfirmedEvent.getEmail().toString());
+            messageHelper.setSubject(String.format("Your Order with OrderNumber %s is confirmed", orderConfirmedEvent.getOrderNumber()));
             messageHelper.setText(String.format("""
                             Hi %s,%s
 
-                            Your OrderPlacedEvent with OrderPlacedEvent number %s is now placed successfully.
+                            Your Order with order number %s is now confirmed.
 
                             Best Regards
                             Spring Shop
                             """,
-                    orderPlaced.getFirstName().toString(),
-                    orderPlaced.getLastName().toString(),
-                    orderPlaced.getOrderNumber()));
+                    orderConfirmedEvent.getFirstName().toString(),
+                    orderConfirmedEvent.getLastName().toString(),
+                    orderConfirmedEvent.getOrderNumber()));
         };
         try {
             javaMailSender.send(messagePreparator);
-            log.info("OrderPlacedEvent Notifcation email sent!!");
+            log.info("Order Confirmation email sent!!");
         } catch (MailException e) {
             log.error("Exception occurred when sending mail", e);
             throw new RuntimeException("Exception occurred when sending mail to springshop@email.com", e);

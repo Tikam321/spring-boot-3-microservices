@@ -25,11 +25,11 @@ public class OrderController {
     }
 
     @PostMapping
-    @CircuitBreaker(
-            name = "inventory",
-            fallbackMethod = "fallbackMethod"
-    )
-    @Retry(name = "inventory")
+//    @CircuitBreaker(
+//            name = "inventory",
+//            fallbackMethod = "fallbackMethod"
+//    )
+//    @Retry(name = "inventory")
     ResponseEntity<Order> createOrder(@NonNull @RequestBody OrderRequest orderRecord) {
         return ResponseEntity.status(201).body(orderService.placeOrder(orderRecord));
     }

@@ -14,12 +14,15 @@ public class Order {
     private String skuCode;
     private BigDecimal price;
     private Integer quantity;
+    private String status;
+    private String email;
 
     public Order(String orderName, String skuCode, BigDecimal price, Integer quantity) {
         this.orderName = orderName;
         this.skuCode = skuCode;
         this.price = price;
         this.quantity = quantity;
+        this.status = "PENDING";
     }
 
     public Order() {
@@ -63,5 +66,21 @@ public class Order {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -1,0 +1,8 @@
+{
+  "type": "record",
+  "name": "InventoryReservationFailedEvent",
+  "namespace": "com.tikam.microservices.inventory_service.event",
+  "fields": [
+    { "name": "orderNumber", "type": "string" }
+  ]
+}

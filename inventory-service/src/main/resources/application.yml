@@ -14,6 +14,22 @@ spring:
   redis:
     host: localhost
     port: 6379
+  
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      properties:
+        schema.registry.url: http://localhost:8090
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: inventory-service
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      properties:
+        schema.registry.url: http://localhost:8090
+        specific.avro.reader: true
 
 server:
   port: 8082
